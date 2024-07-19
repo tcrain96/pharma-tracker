@@ -1,0 +1,68 @@
+<div class="client-content">
+    <h1 class="page-title">Clients</h1>
+    <div class="client-create">
+      <form #clientForm="ngForm" (ngSubmit)="createClient(clientForm)" novalidate>
+        <input type="text" id="name" class="form-control" placeholder="Type the new clients name..." 
+               required
+               name="name" [(ngModel)]="newClient.name"
+               #name="ngModel" >
+        <div *ngIf="name.errors && name.dirty"
+             class="alert alert-danger">
+            <div [hidden]="!name.errors.required">
+              Name is required.
+            </div>
+        </div>
+        <input type="text" id="products" class="form-control" placeholder="Type your clients products below..." 
+               required
+               name="products" [(ngModel)]="newClient.products"
+               #products="ngModel" >
+        <div *ngIf="products.errors && products.dirty"
+             class="alert alert-danger">
+            <div [hidden]="!products.errors.required">
+              At least one product is required.
+            </div>
+        </div>
+        
+        <button *ngIf="!name.errors && !products.errors">Add new client!</button>
+      </form>
+    </div>
+
+    <ul class="client-list">
+      <li *ngFor="let client of clients">
+        <div class="client-row" *ngIf="!editing || editingClient.id != client.id">
+            <span class="client-name">
+              {{client.name}}
+            </span>
+            <span class="client-products">
+                {{client.products}}
+            </span>
+            <span class="client-actions">
+                <a (click)="editClient(client)">
+                  <i class="material-icons edit">edit</i>
+                </a>
+                <a (click)="deleteClient(client.id)">
+                  <i class="material-icons delete">clear</i>
+                </a>
+            </span>
+        </div>
+        <div class="todo-edit" *ngIf="editing && editingClient.id === client.id">
+            <input class="form-control" type="text" 
+             [(ngModel)]="editingClient.name" required>
+             <input class="form-control" type="text" 
+             [(ngModel)]="editingClient.products" required>
+            <span class="edit-actions">
+                <a (click)="updateClient(editingClient.id, editingClient)">
+                  <i class="material-icons">done</i>
+                </a>
+                <a (click)="clearEditing()">
+                  <i class="material-icons">clear</i>
+                </a>
+            </span>
+        </div>
+      </li>
+    </ul>
+
+    <div class="no-clients" *ngIf="clients && clients.length == 0">
+        <p>No Clients Found!</p>
+    </div>
+</div>

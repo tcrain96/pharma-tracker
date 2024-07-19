@@ -20,6 +20,6 @@ public class Client{
 
     private boolean isActive = true;
 
-    private String[] products;
+    private String products;
 
 }

@@ -29,12 +29,15 @@ public class ClientController {
 
     //Update client based off ID
     @PutMapping(value="updateClient/{id}")
-    public  void updateClient(@PathVariable("id") int id, @RequestBody Client client) {
+    public  Client updateClient(@PathVariable("id") int id, @RequestBody Client client) {
         Client data = clientRepository.findById(id).orElse(null);
         if(data != null){
             data.setName(client.getName());
             data.setProducts(client.getProducts());
-            clientRepository.save((data));
+            return clientRepository.save((data));
+        }
+        else{
+            return client;
         }
     }
 
