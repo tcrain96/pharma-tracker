@@ -29,7 +29,7 @@ public class ClientController {
 
     //Update client based off ID
     @PutMapping(value="updateClient/{id}")
-    public  Client updateClient(@PathVariable("id") int id, @RequestBody Client client) {
+    public  Client updateClient(@PathVariable("id") String id, @RequestBody Client client) {
         Client data = clientRepository.findById(id).orElse(null);
         if(data != null){
             data.setName(client.getName());
@@ -43,7 +43,7 @@ public class ClientController {
 
     //Delete client based off ID
     @DeleteMapping(value="deleteClient/{id}")
-    public void deleteTodo(@PathVariable("id") int id) {
+    public void deleteTodo(@PathVariable("id") String id) {
         clientRepository.deleteById(id);
     }
 }

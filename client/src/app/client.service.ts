@@ -24,14 +24,14 @@ export class ClientService {
       );
   }
 
-  updateClient(id:number, clientData: Client): Observable<Client> {
+  updateClient(id:string, clientData: Client): Observable<Client> {
     return this.http.put<Client>(this.baseUrl + '/updateClient/' + id, clientData)
       .pipe(
         catchError(this.handleError)
       );
   }
 
-  deleteClient(id: number): Observable<any> {
+  deleteClient(id: string): Observable<any> {
     return this.http.delete(this.baseUrl + '/deleteClient/' + id)
       .pipe(
         catchError(this.handleError)

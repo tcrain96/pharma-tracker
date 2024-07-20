@@ -7,6 +7,6 @@ import org.springframework.stereotype.Repository;
 import com.pharma_tracker.server.models.Client;
 
 @Repository
-public interface ClientRepository extends MongoRepository<Client, Integer> {
+public interface ClientRepository extends MongoRepository<Client, String> {
 
 }

@@ -9,6 +9,7 @@ import { HttpClientModule } from '@angular/common/http';
   selector: 'app-client-list',
   templateUrl: './client-list.component.html',
   standalone:true,
+  styleUrl:"./client-list.component.css",
   imports:[NgIf, NgFor, FormsModule,HttpClientModule]
 })
 
@@ -34,8 +35,6 @@ export class ClientListComponent implements OnInit {
 
   createClient(clientForm: NgForm): void {
     
-    console.log(this.newClient);
-
     this.clientService.createClient(this.newClient)
       .subscribe(createClient => {        
         clientForm.reset();
@@ -44,14 +43,14 @@ export class ClientListComponent implements OnInit {
       });
   }
 
-  deleteClient(id: number): void {
+  deleteClient(id: string): void {
     this.clientService.deleteClient(id)
     .subscribe(() => {
       this.clients = this.clients.filter(client => client.id != id);
     });
   }
 
-  updateClient(id:number, clientData: Client): void {
+  updateClient(id:string, clientData: Client): void {
     this.clientService.updateClient(id,clientData)
     .subscribe(() => {
       this.ngOnInit();

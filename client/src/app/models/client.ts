@@ -1,5 +1,5 @@
 export class Client {
-    id: number = 0;
+    id: string = "";
     name: string = '';
     products: String = "";
     isActive: boolean = true;
