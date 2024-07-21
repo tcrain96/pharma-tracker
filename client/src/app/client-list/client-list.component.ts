@@ -34,7 +34,6 @@ export class ClientListComponent implements OnInit {
   }
 
   createClient(clientForm: NgForm): void {
-    
     this.clientService.createClient(this.newClient)
       .subscribe(createClient => {        
         clientForm.reset();

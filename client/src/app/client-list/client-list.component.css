@@ -14,6 +14,7 @@
     border-radius: 20px;
     width:1200px;
     margin-bottom:50px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
 .client-create h2, .client-list h2{
@@ -27,7 +28,7 @@
 }
 
 input,textarea{
-    width:100%;
+    width:95%;
     padding:5px;
     margin:10px 0px;
     font-size: 16px;
@@ -35,7 +36,7 @@ input,textarea{
 
 .custom-button{
     border:none;
-    background-color:#BB86FC;
+    background-color:#6D7AE0;
     padding:15px;
     font-size:16px;
     border-radius:5px;
@@ -52,25 +53,111 @@ input,textarea{
     cursor: pointer;
 }
 
-.header-row{
-    background-color:#954cee;
+
+
+/*Table Container*/
+.table-container{
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: left;
 }
-.client-row{
-    background-color:#575757;
+
+/*Table Head*/
+.client-management-table{
+    width:100%;
+    margin:20px 0px;
+    border-radius:10px;
+    font-family: Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
 }
-.flex-grid {
+
+.client-management-table-head{
+    background-color: #6D7AE0;
+}
+
+.client-management-table-body {
+    background-color: #F8F7FF;
+    color:#121212;
+}
+.client-management-table-body:last-child td:first-child {
+    border-radius:0px 0px 0px 10px;
+}
+.client-management-table-body:last-child td:last-child {
+    border-radius:0px 0px 10px 0px;
+}
+
+.client-management-table-head tr th{
+    padding:10px 0px;
+    text-align:left;
+    color: white;
+    font-weight:normal;
+    font-size: 18px;
     padding:20px 20px;
+}
+
+.client-management-table-head tr th:first-child  { 
+    border-top-left-radius: 10px; 
+}
+
+.client-management-table-head tr th:last-child  { 
+    border-top-right-radius: 10px; 
+}
+
+/*Table Body*/
+.client-management-table-body{
+    width:100%;
+    text-align: center;
+}
+.client-management-table-body tr td{
+    padding:20px 0px;
+    text-align: left;
+    padding:10px 20px;
+}
+
+/*Button*/
+.btn{
+    text-decoration: none;
+    color:black;
+    background-color: transparent;
+    border:none;
+    padding:10px 5px;
+    font: inherit;
+	cursor: pointer;
+	outline: inherit;
+}
+
+.edit-client-btn-container{
+    background-color:#FCCA46;
+    transition: .35s;
+    width:80px;
+}
+.edit-client-btn-container div{
     display: flex;
-    font-size:16px;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
 }
-.col {
-    margin-right:10px;
-    flex: 1;
-    padding:10px;
+.edit-client-btn-container:hover {
+    transform:translateX(-7px);
+    transition: .35s;
+    cursor: pointer;
+    
 }
-.client-actions{
-    justify-self: flex-end;
+.delete-client-btn-container{
+    background-color:#FF4365;
+    transition: .35s;
+    width:80px;
 }
-.material-icons:hover{
+.delete-client-btn-container div{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+.delete-client-btn-container:hover {
+    transform:translateX(7px);
+    transition: .35s;
     cursor: pointer;
 }

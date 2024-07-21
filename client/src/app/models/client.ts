@@ -1,6 +1,6 @@
 export class Client {
     id: string = "";
-    name: string = '';
-    products: String = "";
+    name: string = "";
+    products: string = "";
     isActive: boolean = true;
   }

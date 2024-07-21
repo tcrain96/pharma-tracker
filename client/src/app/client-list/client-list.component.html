@@ -1,9 +1,9 @@
 <section id="client-section">
-
+    <!--Creation Widget-->
     <article class="client-create">
       <h2 class="page-title">Add a Client</h2>
       <form #clientForm="ngForm" (ngSubmit)="createClient(clientForm)" novalidate>
-        
+        <!--Client Name-->
         <div class="input-section">
           <label for="name">Client Name:</label>
           <input type="text" id="name" class="form-control" placeholder="Type the new clients name..." 
@@ -17,7 +17,7 @@
               </div>
           </div>
         </div>
-
+        <!--Client Product List-->
         <div class="input-section">
           <label for="products">Product List:</label>
           <textarea rows="4" cols="50" type="text" id="products" class="form-control" placeholder="Type your clients products below..." 
@@ -31,69 +31,86 @@
               </div>
           </div>
         </div>
-        
+        <!--Create Client button-->
         <button class="custom-button" *ngIf="!name.errors && !products.errors">Add new client!</button>
       </form>
     </article>
 
+    <!--Client List Widget-->
     <article class="client-list">
       
+      <!--If there are clients, display title-->
       <div class="no-clients" *ngIf="clients && clients.length > 0">
           <h2 class="page-title">Current Clients</h2>
       </div>
-
+      <!--If there are no clients, indicate no clients title-->
       <div class="no-clients" *ngIf="clients && clients.length == 0">
         <h2 class="page-title">No Current Clients</h2>
       </div>
 
-      <div *ngIf="clients && clients.length > 0">
-        <div  class="header-row flex-grid">
-          <span class="col">
-            Client Name
-          </span>
-          <span class="col">
-            Products
-          </span>
-          <span class="col">
-            Tools
-          </span>
-
-        </div>
-      </div>
-
-      <div *ngFor="let client of clients">
-            <div class="client-row flex-grid" *ngIf="!editing || editingClient.id != client.id">
-                <span class="client-name col">
-                  {{client.name}}
-                </span>
-                <span class="client-products col">
-                    {{client.products}}
-                </span>
-                <span class="client-actions col">
-                    <a (click)="editClient(client)">
-                      <i class="material-icons edit">edit</i>
-                    </a>
-                    <a (click)="deleteClient(client.id)">
-                      <i class="material-icons delete">clear</i>
-                    </a>
-                </span>
-            </div>
-            <div class="todo-edit flex-grid client-row" *ngIf="editing && editingClient.id === client.id.toString()">
-                <input class="form-control col" type="text" 
-                [(ngModel)]="editingClient.name" required>
-                <input class="form-control col" type="text" 
-                [(ngModel)]="editingClient.products" required>
-                <span class="edit-actions col">
-                    <a (click)="updateClient(editingClient.id, editingClient)">
+      <!--If there are clients, include the header for the table-->
+      <section class="table-container">
+        <table class="client-management-table" *ngIf="clients && clients.length > 0">
+          <thead class="client-management-table-head">
+            <tr>
+              <th>
+                Client Name
+              </th>
+              <th>
+                Products
+              </th>
+              <th colspan="2">
+                Actions
+              </th>
+            </tr>
+          </thead>
+          <tbody class="client-management-table-body" *ngFor="let client of clients">
+            <tr *ngIf="!editing || editingClient.id != client.id">
+              <td>{{client.name}}</td>
+              <td>{{client.products}}</td>
+              <td class="edit-client-btn-container" (click)="editClient(client)">
+              <a class="btn" >  
+                 <div>
+                    <i class="material-icons edit">edit</i>
+                  </div>
+              </a>
+              </td>
+              <td class="delete-client-btn-container" (click)="deleteClient(client.id)">
+                  
+              <a class="btn" >   
+                <div>
+                    <i class="material-icons delete">clear</i>
+                  </div>
+                
+              </a>
+            </td>
+            </tr>
+            <tr *ngIf="editing && editingClient.id === client.id">
+              <td><input class="form-control col" type="text" [(ngModel)]="editingClient.name" required></td>
+              <td><input class="form-control col" type="text" [(ngModel)]="editingClient.products" required></td>
+              <td class="edit-client-btn-container" (click)="updateClient(editingClient.id, editingClient)">
+                <a class="btn">
+    
+                <div>
                       <i class="material-icons">done</i>
-                    </a>
-                    <a (click)="clearEditing()">
+                  </div>
+                </a>
+                </td>
+              
+              <td class="delete-client-btn-container" (click)="clearEditing()">
+                <a class="btn" >
+                
+                  <div>
                       <i class="material-icons">clear</i> 
-                    </a>
-                </span>
-            </div>
-      </div>
-
+                  </div>
+                </a>
+              </td>
+              
+            </tr>          
+          </tbody>
+        </table>
+      </section>
+    
     </article>
 
 </section>

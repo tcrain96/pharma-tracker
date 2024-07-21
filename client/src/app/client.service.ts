@@ -18,7 +18,13 @@ export class ClientService {
   }
 
   createClient(clientData: Client): Observable<Client> {
-    return this.http.post<Client>(this.baseUrl + '/createClient', clientData)
+    
+    let clientReadyObj = {
+      name:clientData.name,
+      products:clientData.products
+    }
+    
+    return this.http.post<Client>(this.baseUrl + '/createClient', clientReadyObj)
       .pipe(
         catchError(this.handleError)
       );
