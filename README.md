@@ -2,6 +2,10 @@
 
 A Fully-Fledged client tracking App with Spring Boot & MongoDB in the Backend and Angular in the frontend.
 
+## Demo
+
+![Pharma Tracker Example](https://github.com/user-attachments/assets/1fafc39c-724d-4337-95e4-d423ea4a9f5d)
+
 ## Requirements
 
 1. Java - 1.8.x
