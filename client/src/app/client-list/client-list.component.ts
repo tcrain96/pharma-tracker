@@ -29,13 +29,11 @@ export class ClientListComponent implements OnInit {
   }
 
   getAllClients(): void {
-    this.clientService.getAllClients()
-      .subscribe(clients => this.clients = clients );    
+    this.clientService.getAllClients().subscribe(clients => this.clients = clients );    
   }
 
   createClient(clientForm: NgForm): void {
-    this.clientService.createClient(this.newClient)
-      .subscribe(createClient => {        
+    this.clientService.createClient(this.newClient).subscribe(createClient => {        
         clientForm.reset();
         this.newClient = new Client();
         this.clients.unshift(createClient)
@@ -43,15 +41,13 @@ export class ClientListComponent implements OnInit {
   }
 
   deleteClient(id: string): void {
-    this.clientService.deleteClient(id)
-    .subscribe(() => {
+    this.clientService.deleteClient(id).subscribe(() => {
       this.clients = this.clients.filter(client => client.id != id);
     });
   }
 
   updateClient(id:string, clientData: Client): void {
-    this.clientService.updateClient(id,clientData)
-    .subscribe(() => {
+    this.clientService.updateClient(id,clientData).subscribe(() => {
       this.ngOnInit();
       this.clearEditing();
     });

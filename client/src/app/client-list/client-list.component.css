@@ -3,18 +3,20 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin:100px;
+    margin:100px 0px !important;
     font-family:Arial, Helvetica, sans-serif;
     color:#E1E1E1;
+    flex-wrap: wrap;
 }
 
 .client-create, .client-list{
     background-color: #121212;
-    padding:100px;
+    padding:50px;
     border-radius: 20px;
     width:1200px;
     margin-bottom:50px;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    width:75%;
 }
 
 .client-create h2, .client-list h2{
@@ -52,8 +54,6 @@ input,textarea{
     transition: 0.5s;
     cursor: pointer;
 }
-
-
 
 /*Table Container*/
 .table-container{
